@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function JoinSection() {
   return (
-    <section className="bg-black text-white py-24 px-6 flex items-center justify-center">
+    <section className="bg-black text-white py-24 px-6 flex items-center justify-center -mt-20">
       
       <div className="max-w-3xl text-center">
 

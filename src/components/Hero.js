@@ -6,21 +6,31 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section id="home" className="relative w-full h-screen text-white overflow-hidden">
-      
+    <section
+      id="home"
+      className="relative w-full min-h-screen overflow-hidden text-white"
+    >
+      {/* ✅ Navbar OUTSIDE flow */}
       <Navbar />
 
-      <Image
-        src="/gym.jpg"
-        alt="Fitness"
-        fill
-        priority
-        className="object-cover"
-      />
+      {/* ✅ Background */}
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/gym.webp"
+          alt="Fitness"
+          fill
+          priority
+          className="object-cover"
+        />
 
-      <div className="absolute inset-0 bg-black/70" />
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+      </div>
 
-      <div className="relative z-10 h-full flex items-center px-6 lg:px-16">
+      {/* ✅ Content */}
+      <div className="relative z-10 flex items-center min-h-screen px-6 lg:px-16 pt-24">
         <div className="max-w-3xl">
 
           <motion.h1
@@ -48,7 +58,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="mt-8 flex gap-4"
+            className="mt-8 flex gap-4 flex-wrap"
           >
             <button className="bg-lime-400 text-black px-6 py-3 font-semibold skew-x-[-15deg]">
               <span className="inline-block skew-x-[15deg]">JOIN US</span>

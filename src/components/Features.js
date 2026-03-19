@@ -136,7 +136,7 @@ export default function Features() {
           className="relative overflow-hidden rounded-xl"
         >
           <Image
-            src="/feature.jpg"
+            src="/feature.webp"
             alt="Gym"
             width={500}
             height={600}

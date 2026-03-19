@@ -2,120 +2,130 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 
 const testimonials = [
   {
     img: "/t1.jpg",
-    text: "These workouts aren't just effective — they're empowering. I've built discipline and strength I never knew I had.",
-    role: "Freelance Photographer",
+    name: "Aneesh K.",
+    
+    text: "From day one, the vibe, the trainers, and the programs pushed me beyond my limits. Best decision I’ve made for my health.",
   },
   {
     img: "/t2.jpg",
-    text: "I've tried gyms, apps, and diets — nothing compares to this program. The structure made all the difference.",
-    role: "Account Executive",
+    name: "Rahul S.",
+   
+    text: "The structure and discipline I gained here changed my lifestyle completely. I’ve never felt more consistent.",
   },
   {
     img: "/t3.jpg",
-    text: "The strength training plan helped me recover from injury and come back even stronger.",
-    role: "Former College Athlete",
+    name: "Arjun P.",
+   
+    text: "This isn’t just training — it’s transformation. Mentally and physically stronger than ever.",
   },
   {
     img: "/t4.jpg",
-    text: "Amazing trainers and energy. This place changed my lifestyle.",
-    role: "Entrepreneur",
+    name: "Nikhil R.",
+    
+    text: "Amazing environment and coaching. Every session pushes you to improve.",
   },
   {
     img: "/t5.jpg",
-    text: "I feel stronger, healthier, and more confident every day.",
-    role: "Fitness Model",
+    name: "Vishnu M.",
+   
+    text: "The energy here is unmatched. It keeps me motivated every single day.",
   },
   {
     img: "/t6.jpg",
-    text: "Best fitness decision I've ever made.",
-    role: "Doctor",
+    name: "Adithya N.",
+   
+    text: "Highly professional trainers and effective programs. Results are guaranteed.",
   },
 ];
 
-const loopData = [...testimonials, ...testimonials];
+// animation
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const card = {
+  hidden: { opacity: 0, y: 60 },
+  show: { opacity: 1, y: 0 },
+};
 
 export default function Testimonials() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  // ✅ Detect screen size
-  useEffect(() => {
-    const checkScreen = () => {
-      setIsMobile(window.innerWidth < 640);
-    };
-
-    checkScreen();
-    window.addEventListener("resize", checkScreen);
-
-    return () => window.removeEventListener("resize", checkScreen);
-  }, []);
-
   return (
-    <section className="relative w-full h-[80vh] md:h-screen overflow-hidden bg-black">
+    <section className="bg-black text-white py-20 px-6 lg:px-16 -mt-20">
+      
+      {/* Heading */}
+      <div className="text-center max-w-2xl mx-auto">
+        <p className="text-lime-400 text-sm tracking-widest font-semibold">
+          TESTIMONIALS
+        </p>
+        <h2 className="text-3xl md:text-5xl font-extrabold mt-3">
+          What Our Clients Say
+        </h2>
+        <p className="text-gray-400 mt-4">
+          Real stories from people who transformed their lives.
+        </p>
+      </div>
 
-      {/* 🔥 SLIDER */}
+      {/* Grid */}
       <motion.div
-        className="flex h-full"
-        animate={{ x: ["0%", "-50%"] }}
-        transition={{
-          duration: isMobile ? 15 :15, // ⚡ faster on mobile
-          ease: "linear",
-          repeat: Infinity,
-        }}
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-16"
       >
-        {loopData.map((item, i) => (
-          <div
+        {testimonials.map((item, i) => (
+          <motion.div
             key={i}
-            className="
-              relative h-full flex-shrink-0
-              w-[100vw]        
-              sm:w-[50vw]      
-              lg:w-[33.3333vw]
-            "
+            variants={card}
+            whileHover={{ y: -10, scale: 1.03 }}
+            className="relative bg-white/5 border border-white/10 rounded-xl p-6 backdrop-blur-md group"
           >
-            {/* IMAGE */}
-            <Image
-              src={item.img}
-              alt="testimonial"
-              fill
-              className="object-cover"
-              sizes="(max-width: 640px) 100vw,
-                     (max-width: 1024px) 50vw,
-                     33vw"
-            />
+            
+            {/* Glow */}
+            <div className="absolute inset-0 rounded-xl bg-lime-400/0 group-hover:bg-lime-400/10 blur-xl transition duration-500" />
 
-            {/* DARK OVERLAY */}
-            <div className="absolute inset-0 bg-black/60" />
-
-            {/* GRADIENT */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-
-            {/* TEXT */}
-            <div className="absolute bottom-8 md:bottom-12 left-5 md:left-8 right-5 md:right-8 text-white">
+            {/* Content */}
+            <div className="relative z-10">
               
-              <p className="text-sm md:text-base leading-relaxed opacity-90">
-                "{item.text}"
+              {/* Quote */}
+              <p className="text-gray-300 text-sm leading-relaxed">
+                “{item.text}”
               </p>
 
-              <p className="mt-3 md:mt-4 text-xs text-gray-300 tracking-wide">
-                {item.role}
-              </p>
+              {/* User */}
+              <div className="flex items-center gap-4 mt-6">
+                <div className="relative w-12 h-12">
+                  <Image
+                    src={item.img}
+                    alt={item.name}
+                    fill
+                    className="rounded-full object-cover"
+                  />
+                </div>
 
+                <div>
+                  <p className="text-white font-semibold">
+                    {item.name}
+                  </p>
+                  <p className="text-gray-400 text-xs">
+                    {item.role}
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
+
+          </motion.div>
         ))}
       </motion.div>
-
-      {/* 🔥 LEFT FADE */}
-      <div className="pointer-events-none absolute top-0 left-0 h-full w-16 md:w-32 lg:w-40 bg-gradient-to-r from-black to-transparent z-10" />
-
-      {/* 🔥 RIGHT FADE */}
-      <div className="pointer-events-none absolute top-0 right-0 h-full w-16 md:w-32 lg:w-40 bg-gradient-to-l from-black to-transparent z-10" />
-
     </section>
   );
 }

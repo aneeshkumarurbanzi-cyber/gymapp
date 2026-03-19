@@ -7,21 +7,21 @@ const programs = [
   {
     title: "Yoga",
     desc: "Build flexibility, balance, and inner focus with personalized yoga sessions designed for you.",
-    img: "/p1.jpg",
+    img: "/p1.webp",
   },
   {
     title: "Strength Training",
     desc: "Transform your body with targeted strength programs that maximize muscle growth.",
-    img: "/p2.jpg",
+    img: "/p2.webp",
   },
   {
     title: "Cardio",
     desc: "Boost your stamina and burn calories efficiently with dynamic cardio workouts.",
-    img: "/p3.jpg",
+    img: "/p3.webp",
   },
 ];
 
-// 🔥 container animation (stagger effect)
+// 🔥 container animation
 const container = {
   hidden: {},
   show: {
@@ -47,9 +47,8 @@ export default function Programs() {
       viewport={{ once: true }}
       className="bg-black text-white py-20 px-6 lg:px-16"
     >
-      {/* Heading */}
+      {/* HEADING */}
       <div className="text-center max-w-2xl mx-auto">
-        
         <motion.p
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -79,7 +78,7 @@ export default function Programs() {
         </motion.p>
       </div>
 
-      {/* Cards */}
+      {/* CARDS */}
       <motion.div
         variants={container}
         initial="hidden"
@@ -91,29 +90,32 @@ export default function Programs() {
           <motion.div
             key={i}
             variants={card}
-            whileHover={{ scale: 1.05, y: -10 }} // 🔥 stronger hover
+            whileHover={{ scale: 1.05, y: -10 }}
             className="group cursor-pointer"
           >
-            
-            {/* Image */}
+            {/* IMAGE BLOCK */}
             <div className="relative overflow-hidden rounded-xl shadow-lg group-hover:shadow-lime-400/20 transition duration-500">
-              
+
+              {/* IMAGE */}
               <Image
                 src={item.img}
                 alt={item.title}
                 width={400}
                 height={500}
-                className="w-full h-[400px] object-cover transition duration-700 ease-out group-hover:scale-110"
+                className="w-full h-[400px] object-cover transition duration-700 ease-out group-hover:scale-110 brightness-90 group-hover:brightness-100"
               />
 
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition duration-500" />
+              {/* DARK BASE OVERLAY */}
+              <div className="absolute inset-0 bg-black/50 transition duration-500 group-hover:bg-black/20" />
 
-              {/* Glow */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-lime-400/10 transition duration-500" />
+              {/* GRADIENT DEPTH (PREMIUM LOOK) */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-90 group-hover:opacity-70 transition duration-500" />
+
+              {/* LIME GLOW */}
+              <div className="absolute inset-0 bg-lime-400/10 opacity-0 group-hover:opacity-100 transition duration-500" />
             </div>
 
-            {/* Text */}
+            {/* TEXT */}
             <h3 className="mt-4 text-xl font-semibold transition group-hover:text-lime-400">
               {item.title}
             </h3>
@@ -125,24 +127,22 @@ export default function Programs() {
         ))}
       </motion.div>
 
-      {/* Buttons */}
+      {/* BUTTONS */}
       <motion.div
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.6 }}
         className="flex justify-center gap-6 mt-16"
       >
-        {/* Shine Button */}
+        {/* JOIN BUTTON */}
         <button className="relative overflow-hidden bg-lime-400 text-black px-6 py-3 font-semibold skew-x-[-15deg] group">
-          
           <span className="absolute inset-0 bg-white/20 translate-x-[-120%] group-hover:translate-x-[120%] transition duration-700" />
-
           <span className="relative inline-block skew-x-[15deg] group-hover:scale-110 transition duration-300">
             JOIN
           </span>
         </button>
 
-        {/* Secondary */}
+        {/* SECONDARY BUTTON */}
         <button className="border border-gray-400 px-6 py-3 skew-x-[-15deg] hover:bg-white hover:text-black transition duration-300">
           <span className="inline-block skew-x-[15deg]">
             ABOUT PROGRAMS
@@ -151,4 +151,4 @@ export default function Programs() {
       </motion.div>
     </motion.section>
   );
-}                   
+}

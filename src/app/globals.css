@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+/* ✅ Fix horizontal overflow globally */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* 🔥 Prevent layout shifting issues */
+body {
+  position: relative;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

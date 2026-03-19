@@ -9,25 +9,25 @@ const steps = [
     id: "01",
     title: "Initial assessment",
     desc: "We begin with a comprehensive fitness evaluation to understand your current level, set clear goals, and tailor the right approach for your body and lifestyle.",
-    img: "/process1.jpg",
+    img: "/process1.webp",
   },
   {
     id: "02",
     title: "Customized Workout Plan",
     desc: "Based on your assessment, we create a personalized training program designed to maximize results.",
-    img: "/process2.jpg",
+    img: "/process2.webp",
   },
   {
     id: "03",
     title: "Guided Training Sessions",
     desc: "Work with expert trainers to ensure proper form and stay motivated.",
-    img: "/process3.jpg",
+    img: "/process3.webp",
   },
   {
     id: "04",
     title: "Progress Tracking",
     desc: "Track performance and adjust plans as you hit milestones.",
-    img: "/process4.jpg",
+    img: "/process4.webp",
   },
 ];
 
@@ -144,7 +144,7 @@ export default function Process() {
         </div>
 
         {/* RIGHT IMAGE */}
-        <div className="relative h-full min-h-[500px] overflow-hidden rounded-xl">
+        <div className="relative h-full min-h-[500px] overflow-x-hidden rounded-xl">
           
           <motion.div
             key={active}
