@@ -5,37 +5,37 @@ import { motion } from "framer-motion";
 
 const testimonials = [
   {
-    img: "/t1.jpg",
+    img: "/t1.webp",
     name: "Aneesh K.",
     
     text: "From day one, the vibe, the trainers, and the programs pushed me beyond my limits. Best decision I’ve made for my health.",
   },
   {
-    img: "/t2.jpg",
+    img: "/t2.webp",
     name: "Rahul S.",
    
     text: "The structure and discipline I gained here changed my lifestyle completely. I’ve never felt more consistent.",
   },
   {
-    img: "/t3.jpg",
+    img: "/t3.webp",
     name: "Arjun P.",
    
     text: "This isn’t just training — it’s transformation. Mentally and physically stronger than ever.",
   },
   {
-    img: "/t4.jpg",
+    img: "/t4.webp",
     name: "Nikhil R.",
     
     text: "Amazing environment and coaching. Every session pushes you to improve.",
   },
   {
-    img: "/t5.jpg",
+    img: "/t5.webp",
     name: "Vishnu M.",
    
     text: "The energy here is unmatched. It keeps me motivated every single day.",
   },
   {
-    img: "/t6.jpg",
+    img: "/t6.webp",
     name: "Adithya N.",
    
     text: "Highly professional trainers and effective programs. Results are guaranteed.",
